@@ -1,0 +1,312 @@
+basePath: /
+definitions:
+  models.AddingHumanStruct:
+    properties:
+      age:
+        type: integer
+      gender:
+        type: string
+      name:
+        type: string
+      nation:
+        type: string
+      secname:
+        type: string
+      thirdname:
+        type: string
+    type: object
+host: localhost:8080
+info:
+  contact: {}
+  description: This is a sample server.
+  title: redsoft_TEST
+  version: "1.0"
+paths:
+  /add:
+    post:
+      consumes:
+      - application/x-www-form-urlencoded
+      description: Добавляет человека по имени, отчеству, фамилии и email(не обязательно,
+        идет как дополнение), получая возраст, пол и нацию из внешних API
+      parameters:
+      - description: Имя
+        in: formData
+        name: name
+        required: true
+        type: string
+      - description: Фамилия
+        in: formData
+        name: secname
+        required: true
+        type: string
+      - description: Отчество
+        in: formData
+        name: thirdname
+        type: string
+      - description: Email
+        in: formData
+        name: email
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Человек с именем ... был добавлен
+          schema:
+            type: string
+        "400":
+          description: Ошибка
+          schema:
+            type: string
+      summary: Добавить нового человека
+      tags:
+      - people
+  /addemail:
+    post:
+      consumes:
+      - application/x-www-form-urlencoded
+      description: Добавляет email к человеку по имени и отчеству
+      parameters:
+      - description: Email
+        in: formData
+        name: email
+        required: true
+        type: string
+      - description: Имя
+        in: formData
+        name: name
+        required: true
+        type: string
+      - description: Фамилия
+        in: formData
+        name: secname
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 'Емейл: ... присоединен к человеку: ...'
+          schema:
+            type: string
+        "400":
+          description: Ошибка
+          schema:
+            type: string
+      summary: Привязать email к человеку
+      tags:
+      - people
+  /addwithparams:
+    post:
+      consumes:
+      - application/x-www-form-urlencoded
+      description: Добавляет человека, используя параметры, переданные напрямую (без
+        внешних API)
+      parameters:
+      - description: Имя
+        in: formData
+        name: name
+        required: true
+        type: string
+      - description: Фамилия
+        in: formData
+        name: secname
+        required: true
+        type: string
+      - description: Отчество
+        in: formData
+        name: thirdname
+        type: string
+      - description: Возраст
+        in: formData
+        name: age
+        type: integer
+      - description: Национальность (напр. US, RU)
+        in: formData
+        name: nation
+        type: string
+      - description: Пол (male или female, но другой тоже подойдет:) )
+        in: formData
+        name: gender
+        type: string
+      - description: Email
+        in: formData
+        name: email
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Человек с именем ... был добавлен с собственными параметрами
+          schema:
+            type: string
+        "400":
+          description: Ошибка
+          schema:
+            type: string
+      summary: Добавить нового человека с ручными параметрами
+      tags:
+      - people
+  /changeUserInfo:
+    post:
+      consumes:
+      - application/x-www-form-urlencoded
+      description: Обновляет информацию о человеке по имени, отчеству и фамилии
+      parameters:
+      - description: Имя
+        in: formData
+        name: name
+        required: true
+        type: string
+      - description: Фамилия
+        in: formData
+        name: secname
+        required: true
+        type: string
+      - description: Отчество
+        in: formData
+        name: thirdname
+        type: string
+      - description: Пол
+        in: formData
+        name: gender
+        type: string
+      - description: Возраст
+        in: formData
+        name: age
+        type: string
+      - description: Национальность
+        in: formData
+        name: nation
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Информация о человеке ... была обновлена!
+          schema:
+            type: string
+        "400":
+          description: Ошибка при обновлении
+          schema:
+            type: string
+      summary: Обновить информацию о пользователе
+      tags:
+      - people
+  /checkfriendship:
+    post:
+      consumes:
+      - application/x-www-form-urlencoded
+      description: Возвращает список друзей пользователя по имени и фамилии
+      parameters:
+      - description: Имя пользователя
+        in: formData
+        name: name
+        required: true
+        type: string
+      - description: Фамилия пользователя
+        in: formData
+        name: secname
+        required: true
+        type: string
+      produces:
+      - text/plain
+      responses:
+        "202":
+          description: Список друзей пользователя
+          schema:
+            type: string
+        "400":
+          description: Ошибка при получении друзей
+          schema:
+            type: string
+      summary: Проверить друзей пользователя
+      tags:
+      - friendship
+  /createfriendship:
+    post:
+      consumes:
+      - application/x-www-form-urlencoded
+      description: Создаёт дружбу между пользователями по имени и фамилии
+      parameters:
+      - description: Имя первого пользователя
+        in: formData
+        name: name
+        required: true
+        type: string
+      - description: Фамилия первого пользователя
+        in: formData
+        name: secname
+        required: true
+        type: string
+      - description: Имя второго пользователя
+        in: formData
+        name: nameFr
+        required: true
+        type: string
+      - description: Фамилия второго пользователя
+        in: formData
+        name: secnameFr
+        required: true
+        type: string
+      produces:
+      - text/plain
+      responses:
+        "202":
+          description: Дружба между ... создана!
+          schema:
+            type: string
+        "400":
+          description: Ошибка при создании дружбы
+          schema:
+            type: string
+      summary: Создать дружбу между двумя пользователями
+      tags:
+      - friendship
+  /getallusers:
+    get:
+      consumes:
+      - application/json
+      description: Возвращает массив всех людей из базы
+      produces:
+      - application/json
+      responses:
+        "202":
+          description: Accepted
+          schema:
+            items:
+              $ref: '#/definitions/models.AddingHumanStruct'
+            type: array
+        "400":
+          description: Ошибка при получении пользователей
+          schema:
+            type: string
+      summary: Получить всех пользователей
+      tags:
+      - people
+  /getbysecname:
+    post:
+      consumes:
+      - application/x-www-form-urlencoded
+      description: Возвращает структуру человека по фамилии (secname), если он найден
+      parameters:
+      - description: Фамилия человека
+        in: formData
+        name: secname
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "202":
+          description: Accepted
+          schema:
+            $ref: '#/definitions/models.AddingHumanStruct'
+        "400":
+          description: Ошибка или человек не найден
+          schema:
+            type: string
+      summary: Получить данные о человеке по фамилии
+      tags:
+      - people
+swagger: "2.0"
