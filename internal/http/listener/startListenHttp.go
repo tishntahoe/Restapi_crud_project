@@ -3,7 +3,7 @@ package listener
 import (
 	httpSwagger "github.com/swaggo/http-swagger"
 	_ "github.com/tishntahoe/redsoft/docs"
-	"github.com/tishntahoe/redsoft/http/handlers"
+	"github.com/tishntahoe/redsoft/internal/http/handlers"
 	"net/http"
 )
 

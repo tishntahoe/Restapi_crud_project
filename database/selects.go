@@ -3,7 +3,7 @@ package database
 import (
 	"context"
 	"errors"
-	"github.com/tishntahoe/redsoft/models"
+	"github.com/tishntahoe/redsoft/pkg/models"
 	"time"
 )
 

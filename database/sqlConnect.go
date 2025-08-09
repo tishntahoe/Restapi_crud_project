@@ -14,7 +14,7 @@ func ConnectToDatabase() {
 	if DbConnect != nil {
 		return
 	}
-	path, _ := filepath.Abs("..\\database\\database")
+	path, _ := filepath.Abs(filepath.Join("..", "database", "database"))
 	fmt.Println(path)
 	db, err := sql.Open("sqlite", path)
 	if err != nil {

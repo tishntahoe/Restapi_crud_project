@@ -2,7 +2,7 @@ package handlers
 
 import (
 	"github.com/tishntahoe/redsoft/database"
-	"github.com/tishntahoe/redsoft/models"
+	"github.com/tishntahoe/redsoft/pkg/models"
 	"net/http"
 	"strconv"
 )

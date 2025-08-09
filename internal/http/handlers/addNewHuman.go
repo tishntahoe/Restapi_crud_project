@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/tishntahoe/redsoft/database"
-	"github.com/tishntahoe/redsoft/models"
+	"github.com/tishntahoe/redsoft/pkg/models"
 	"io"
 	"net/http"
 	"net/url"

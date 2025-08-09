@@ -3,7 +3,7 @@ package handlers
 import (
 	"encoding/json"
 	"github.com/tishntahoe/redsoft/database"
-	"github.com/tishntahoe/redsoft/models"
+	"github.com/tishntahoe/redsoft/pkg/models"
 	"net/http"
 )
 

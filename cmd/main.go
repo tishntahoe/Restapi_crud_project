@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"github.com/tishntahoe/redsoft/database"
 	_ "github.com/tishntahoe/redsoft/docs"
-	"github.com/tishntahoe/redsoft/http/listener"
+	"github.com/tishntahoe/redsoft/internal/http/listener"
 )
 
 // @title redsoft_TEST
